@@ -15,17 +15,19 @@
         <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
         @include('layouts/includes.css')
+        <!-- APEX charts -->
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     </head>
 
     <body data-topbar="dark" data-layout="horizontal">
 
-        <div id="layout-wrapper">
             @guest
 
                 {{-- Not loggedIn then here --}}
                 @yield('content');
 
             @else
+                <div id="layout-wrapper">
                     <header id="page-topbar">
                         <div class="navbar-header">
                             <div class="d-flex">
@@ -55,12 +57,12 @@
                                 </button>
 
                                 <!-- App Search-->
-                                <form class="app-search d-none d-lg-block">
+                                {{-- <form class="app-search d-none d-lg-block">
                                     <div class="position-relative">
                                         <input type="text" class="form-control" placeholder="Search...">
                                         <span class="bx bx-search-alt"></span>
                                     </div>
-                                </form>
+                                </form> --}}
                             </div>
 
                             <div class="d-flex">
@@ -85,7 +87,7 @@
                                     </div>
                                 </div>
 
-                                <div class="dropdown d-inline-block">
+                                {{-- <div class="dropdown d-inline-block">
                                     <button type="button" class="btn header-item waves-effect"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img id="header-lang-img" src="{{ asset('images/flags/us.jpg') }}" alt="Header Language" height="16">
@@ -116,7 +118,7 @@
                                             <img src="{{ asset('images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="dropdown d-none d-lg-inline-block ms-1">
                                     <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
@@ -236,7 +238,7 @@
                         </div>
                     </header>
 
-                    <div class="topnav">
+                    <div class="topnav mt-5">
                         <div class="container-fluid">
                             <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
@@ -284,8 +286,8 @@
                             </div>
                         </footer>
                     </div>
+                </div>
             @endguest
-        </div>
 
         @include('layouts/includes.js')
     </body>

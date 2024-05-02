@@ -3,7 +3,7 @@
     'resources/css/icons.min.css',
     'resources/css/app.min.css',
     'resources/assets/js/plugin.js',
-    'https://cdn.jsdelivr.net/npm/apexcharts'
+    // 'https://cdn.jsdelivr.net/npm/apexcharts'
 ]);
 <!-- Bootstrap Css -->
 {{-- <link href="{{ asset('resources/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />

@@ -66,8 +66,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
-                                                <p class="text-muted mb-0">Region</p>
-                                                <h5 class="font-size-15">{{$data['client_isp']}}</h5>
+                                                <p class="text-muted mb-0">Ping Latency(s)</p>
+                                                <h5 class="font-size-15">{{$data['ping_latency']}}s</h5>
                                             </div>
                                             <div class="col-6">
                                                 <p class="text-muted mb-0">Country</p>
@@ -75,9 +75,9 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <p class="text-muted mb-0">Ping Latency(s)</p>
-                                                <h5 class="font-size-15">{{$data['ping_latency']}}s</h5>
+                                            <div class="col-12">
+                                                <p class="text-muted mb-0">Region</p>
+                                                <h5 class="font-size-15">{{$data['client_isp']}}</h5>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -112,11 +112,11 @@
                                     <h4 class="card-title mb-4">Realtime Monitor</h4>
                                     <div class="text-muted text-center">
                                         <h4 class="mb-3 mt-4">INTERNET SPEED</h4>
-                                        <p class="mb-2">
-                                            <span class="badge badge-soft-success font-size-11 me-2"> {{$data['download_speed']}} MB <i class="mdi mdi-arrow-down"></i> </span> Downloading
-                                        </p>
                                         <p class="mb-3">
                                             <span class="badge badge-soft-primary font-size-11 me-2"> {{$data['upload_speed']}} MB <i class="mdi mdi-arrow-up"></i> </span> Uploading
+                                        </p>
+                                        <p class="mb-2">
+                                            <span class="badge badge-soft-success font-size-11 me-2"> {{$data['download_speed']}} MB <i class="mdi mdi-arrow-down"></i> </span> Downloading
                                         </p>
                                     </div>
 
@@ -180,8 +180,7 @@
                                     <h4 class="card-title mb-4">CPU Infromation</h4>
 
                                     <div class="text-center">
-                                        <h3>{{$data['cpu_info']['num_cpus']}}</h3>
-                                        <p>Cores</p>
+                                        <h3>{{$data['cpu_info']['num_cpus']}} Cores</h3>
                                     </div>
 
                                     <div class="table-responsive mt-4">
@@ -286,4 +285,70 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // var options = {
+        //     series: [92.1],
+        //     chart: {
+        //         height: 100,
+        //         type: 'radialBar',
+        //     },
+        //     plotOptions: {
+        //         radialBar: {
+        //             hollow: {
+        //                 size: '35%',
+        //             }
+        //         },
+        //     },
+        //     colors: ['#FF5733'],
+        //     labels: [''],
+        // };
+
+        // // Initialize the chart
+        // var chart = new ApexCharts(document.querySelector("#chartTesting"), options);
+        // chart.render();
+        var available = {{$data['cpu_info']['cpu_percent']}};
+        var used = {{100 - $data['cpu_info']['cpu_percent']}};
+        var options = {
+        series: [ available, used],
+        chart: {
+        width: 305,
+        type: 'donut',
+        },
+        plotOptions: {
+        pie: {
+            // startAngle: -90,
+            // endAngle: 270
+        }
+        },
+        dataLabels: {
+        enabled: false
+        },
+        fill: {
+        //   type: 'gradient',
+        },
+        legend: {
+        formatter: function(val, opts) {
+            return val + " - " + opts.w.globals.series[opts.seriesIndex]
+        }
+        },
+        responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+            width: 200
+            },
+            legend: {
+            position: 'bottom'
+            }
+        }
+        }],
+        colors: ['#86ea7e', '#f17f7f'],
+        labels: ['Available', 'Used']
+        };
+
+        var chart = new ApexCharts(document.querySelector("#tab3"), options);
+        chart.render();
+
+    </script>
 @endsection
