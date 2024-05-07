@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VpnController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::resource('vpn', VpnController::class)->names('vpn');
 Route::get('/ai-tools', function () {
     return view('ai-tools');
 })->name('ai-tools');

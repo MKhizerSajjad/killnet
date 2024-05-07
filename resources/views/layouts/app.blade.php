@@ -33,7 +33,7 @@
                             <div class="d-flex">
                                 <!-- LOGO -->
                                 <div class="navbar-brand-box">
-                                    <a href="killnet-dash.html" class="logo logo-dark">
+                                    <a href="{{route('dashboard')}}" class="logo logo-dark">
                                         <span class="logo-sm">
                                             <img src="{{ asset('images/logo.png') }}" alt="" height="50">
                                         </span>
@@ -42,7 +42,7 @@
                                         </span>
                                     </a>
 
-                                    <a href="killnet-dash.html" class="logo logo-light">
+                                    <a href="{{route('dashboard')}}" class="logo logo-light">
                                         <span class="logo-sm">
                                             <img src="{{ asset('images/logo.png') }}" alt="" height="50">
                                         </span>
@@ -238,7 +238,7 @@
                         </div>
                     </header>
 
-                    <div class="topnav mt-5">
+                    <div class="topnav">
                         <div class="container-fluid">
                             <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
@@ -256,6 +256,13 @@
                                             <a class="nav-link dropdown-toggle arrow-none" href="{{route('ai-tools')}}" id="topnav-dashboard" role="button"
                                             >
                                                 <i class="bx bx-bot me-2"></i><span key="t-aitool">AI Tools</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle arrow-none" href="{{route('vpn.create')}}" id="topnav-dashboard" role="button"
+                                            >
+                                                <i class="bx bx-label me-2"></i><span key="t-aitool">VPN</span>
                                             </a>
                                         </li>
                                     </ul>
